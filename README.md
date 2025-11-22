@@ -28,7 +28,7 @@ cd interview-uploader
 npm install
 ```
 
-### 3. Configure Google Drive API
+### 3. Configure Google Drive API and Youtube API
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project
@@ -36,7 +36,7 @@ npm install
 4. Create OAuth 2.0 credentials (Desktop App)
 5. Download credentials JSON
 6. Save as `config/google_credentials.json`
-
+7. Same with the youtube too Enable Youtube API V3
 ### 4. Setup Database
 
 Import the schema from the system prompt into your MySQL database.
@@ -47,8 +47,8 @@ On first run:
 1. Click **Settings** button
 2. Enter MySQL credentials
 3. Set file paths:
-   - **Compressed Storage**: Where compressed videos are kept forever
-   - **OneDrive Folder**: Local OneDrive sync folder
+   - **Compressed Storage**: Where compressed videos are kept forever given in app settings
+  
 
 ### 6. Run Application
 
@@ -75,7 +75,7 @@ Output: `dist/Interview Recording Uploader Setup 1.0.0.exe`
    - ✅ Renames file: `CandidateName_Company_Type_Date.mp4`
    - ✅ Compresses video (if beneficial)
    - ✅ Uploads to Google Drive (shareable link)
-   - ✅ Copies to OneDrive folder (auto-syncs)
+   - ✅ Copies to youtube (auto-syncs)
    - ✅ Updates database with both URLs
    - ✅ Schedules original deletion (50 days)
 
@@ -97,6 +97,7 @@ interview-uploader/
 │   └── video_compressor.js # FFmpeg compression
 ├── config/
 │   └── google_credentials.json # (You add this)
+│   └── Youtube_credentials.json # (You add this)
 └── logs/                # Application logs
 ```
 
@@ -147,8 +148,8 @@ Install FFmpeg and add to PATH:
 
 - **Original Files**: Deleted after 50 days (scheduled)
 - **Compressed Files**: Kept forever in `COMPRESSED_STORAGE`
-- **Google Drive**: Primary cloud storage with shareable links
-- **OneDrive**: Backup cloud storage (local sync)
+- **Google Drive**: Primary cloud storage with shareable links in access restricted
+- **Youtube**: BAckup cloud storage with shareable links in private
 
 ### Folder Organization (Both Clouds)
 
